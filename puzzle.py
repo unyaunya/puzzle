@@ -8,20 +8,15 @@ def factoradic(n):
                        [3,2,0,1]を返す
     """
     rslt = []
-    (r, m) = divmod(n, 2)
-    rslt.append(m)
-    n = n - m
+    rslt.append(n%2)
+    n = n - rslt[0]
     k = 2
-    fact_k = k
-    #import pdb; pdb.set_trace();
     while n != 0:
-        r = n / fact_k
+        r = n / k
         a = r % (k+1)
         rslt.append(a)
-        #print n, k, fact_k, r, a, rslt
-        n = n - a * fact_k
+        n = n - a * k
         k = k + 1
-        fact_k = k * fact_k
     rslt.reverse()
     return rslt
     
@@ -47,7 +42,6 @@ def permute(sqquence, factor):
         sqquence.pop(f[i])
         #print sqquence, rslt
     rslt.append(sqquence[0])
-    #rslt.reverse()
     return rslt
 
 def latin_square(k, row_factor=None, col_factor=None):
